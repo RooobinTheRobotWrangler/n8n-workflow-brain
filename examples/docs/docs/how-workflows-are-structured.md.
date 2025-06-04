@@ -1,0 +1,63 @@
+# How Workflows Are Structured in n8n
+
+n8n workflows are visual representations of automated processes, composed of interconnected nodes that perform specific tasks. Understanding the structure of workflows is essential for designing efficient and effective automations.
+
+## Workflow Components
+
+### 1. Nodes
+
+Nodes are the fundamental building blocks of workflows. Each node performs a specific operation, such as retrieving data from an API, processing data, or sending an email. Nodes can be categorized into:
+
+- **Trigger Nodes:** Initiate workflows based on specific events (e.g., receiving a webhook, a scheduled time).
+- **Action Nodes:** Perform tasks like data transformation, API requests, or sending messages.
+
+### 2. Connections
+
+Connections define the flow of data between nodes. They determine the sequence in which nodes execute and how data is passed along the workflow.
+
+To create a connection between two nodes:
+1. Click on the output port (right side) of the source node.
+2. Drag the connection line to the input port (left side) of the target node.
+
+### 3. Sticky Notes
+
+Sticky notes are annotations that can be added to workflows to provide context or explanations, aiding in documentation and collaboration.
+
+## Workflow Execution Flow
+
+1. **Initiation:** A trigger node activates the workflow upon detecting a predefined event.
+2. **Sequential Execution:** Nodes execute in the order defined by their connections, processing and passing data along the chain.
+3. **Conditional Logic:** Nodes like "IF" or "Switch" can introduce branching, allowing different execution paths based on data conditions.
+4. **Loops and Iterations:** Nodes can be configured to process multiple items or repeat actions until certain conditions are met.
+5. **Completion:** The workflow concludes once all nodes have executed their tasks.
+
+## Flow Logic
+
+n8n allows you to represent complex logic in your workflows, including:
+
+- **Splitting with Conditionals:** Use the "IF" or "Switch" nodes to create branches based on conditions.
+- **Merging Data:** Combine data from multiple branches using the "Merge" node.
+- **Looping:** Use the "Loop Over Items" node to iterate over a list of items.
+- **Waiting:** Introduce delays or wait for specific conditions using the "Wait" node.
+- **Sub-Workflows:** Modularize workflows by calling sub-workflows using the "Execute Workflow" node.
+- **Error Handling:** Manage errors gracefully using the "Error Trigger" node.
+
+## Execution Order in Multi-Branch Workflows
+
+In workflows with multiple branches, n8n executes branches based on their position on the canvas:
+
+- **Top-to-Bottom:** Branches are executed from top to bottom.
+- **Left-to-Right:** If branches are at the same vertical position, execution proceeds from left to right.
+
+You can change the execution order in your workflow settings.
+
+## Data Structure
+
+n8n processes data in the form of items, where each item is a JSON object. Nodes receive input data, process it, and pass the output to the next node. Understanding the data structure is crucial for effective data mapping and transformation within workflows.
+
+## Best Practices
+
+- **Modularity:** Break complex workflows into smaller, manageable sub-workflows for clarity and reusability.
+- **Error Handling:** Implement error-handling nodes to manage exceptions and ensure robustness.
+- **Documentation:** Use sticky notes and clear naming conventions to make workflows understandable to collaborators.
+- **Testing:** Regularly test workflows to validate functionality and catch issues early.
